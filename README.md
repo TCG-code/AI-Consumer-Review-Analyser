@@ -104,7 +104,7 @@ Install Python and Git on your computer.
 Replace the example URL with your actual GitHub repository URL.
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/TCG-code/AI-Consumer-Review-Analyser
 cd TCG-code
 ```
 
