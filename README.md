@@ -101,8 +101,6 @@ Install Python and Git on your computer.
 
 ### Step 1: Clone the Repository
 
-Replace the example URL with your actual GitHub repository URL.
-
 ```bash
 git clone https://github.com/TCG-code/AI-Consumer-Review-Analyser
 cd TCG-code
