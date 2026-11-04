@@ -7,7 +7,7 @@ Developed as part of the **CBSE Class XII Artificial Intelligence (843) Team Pro
 ## Project Links
 
 - **GitHub Repository:** [View Source Code](https://github.com/TCG-code/AI-Consumer-Review-Analyser)
-- **Live Web Application:** [Open Streamlit App](ai-consumer-review-analyser.streamlit.app)
+- **Live Web Application:** [Open Streamlit App](https://ai-consumer-review-analyser.streamlit.app/)
 
 ## Project Overview
 
@@ -124,6 +124,8 @@ cd TCG-code
 ```bash
 pip install -r requirements.txt
 ```
+
+Ignore the Dev Container folder if the project is for offline use, that folder is for the Streamlit Online App Integration.
 
 ### Step 3: Verify the Dataset
 
