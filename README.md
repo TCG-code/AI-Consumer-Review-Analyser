@@ -4,6 +4,11 @@ An AI-based Python project that analyzes online consumer reviews using Machine L
 
 Developed as part of the **CBSE Class XII Artificial Intelligence (843) Team Project — Session 2026–27**.
 
+## Project Links
+
+- **GitHub Repository:** [View Source Code](https://github.com/TCG-code/AI-Consumer-Review-Analyser)
+- **Live Web Application:** [Open Streamlit App](ai-consumer-review-analyser.streamlit.app)
+
 ## Project Overview
 
 Online consumer reviews influence purchasing decisions, but distinguishing human-written reviews from computer-generated ones can be challenging. This project uses Machine Learning to identify linguistic patterns in review text and estimate its likely authorship category.
@@ -19,19 +24,25 @@ The application uses a TF-IDF vectorizer and Logistic Regression classifier for 
 - **Sentiment Analysis:** Classifies review sentiment as Positive, Negative, or Neutral.
 - **Prediction Explanations:** Displays predefined statements associated with the predicted category.
 - **Multiple Reviews:** Allows users to analyze reviews consecutively through the command-line interface.
+- **Web Interface:** Provides an interactive browser-based interface through Streamlit.
+- **Local and Cloud Access:** Supports running the application locally or accessing its publicly hosted Streamlit version.
 
 ## AI Techniques
 
 ### TF-IDF Vectorization
+
 Converts review text into numerical features representing words and word combinations.
 
 ### Logistic Regression
+
 A supervised Machine Learning algorithm trained to distinguish the Original and Computer Generated classes.
 
 ### VADER Sentiment Analysis
+
 Uses a lexicon-based approach to classify review sentiment as Positive, Negative, or Neutral.
 
 ### Machine Learning Pipeline
+
 Combines text vectorization and classification into a reusable pipeline saved with Joblib.
 
 ## Dataset
@@ -74,6 +85,7 @@ The dataset license is separate from the GNU GPL v3.0 license used for this proj
 - Scikit-learn
 - NLTK
 - Joblib
+- Streamlit
 
 ## Repository Structure
 
@@ -84,6 +96,7 @@ TCG-code/
 │   └── fake reviews dataset.csv
 ├── LICENSE
 ├── README.md
+├── app.py
 ├── inspect_dataset.py
 ├── main.py
 ├── requirements.txt
@@ -91,7 +104,7 @@ TCG-code/
 └── train_model.py
 ```
 
-**Note:** The trained model file `review_pipeline.pkl` is not included in this repository. Each user must generate their own model by running the training script.
+**Note:** The trained model file is not included in this repository. Each user can generate their own model by running the training script. The Streamlit Cloud application automatically checks for the model and trains one if it is missing.
 
 ## Installation and Usage
 
@@ -128,17 +141,21 @@ Run the training script:
 python train_model.py
 ```
 
-This script preprocesses the dataset, trains and evaluates the Machine Learning pipeline, and saves the trained model as:
+This script preprocesses the dataset, trains and evaluates the Machine Learning pipeline, and saves the trained model locally as:
 
 ```text
 models/review_pipeline.pkl
 ```
 
-The `models` directory must be created by the training script if it does not already exist.
+The `models` directory is created automatically by the training script if it does not already exist.
 
 ### Step 5: Run the Application
 
-After training completes successfully, run:
+After training completes successfully, users can choose either of the following interfaces.
+
+**Option A: Command-Line Interface**
+
+Run:
 
 ```bash
 python main.py
@@ -146,13 +163,35 @@ python main.py
 
 Enter a consumer review when prompted to view its authorship assessment, estimated human-written probability, sentiment, and explanatory statements.
 
-**Important:** Run the training script before running the application on a fresh installation, because the trained model is not included in this repository.
+**Option B: Streamlit Web Interface**
+
+Run:
+
+```bash
+streamlit run app.py
+```
+
+This starts a local web server and opens the application in a browser, allowing users to analyse consumer reviews through an interactive graphical interface.
+
+**Important:** Run the training script before using either interface on a fresh local installation, because the trained model is not included in this repository.
+
+## Running on Streamlit Community Cloud
+
+The project can also be accessed through a publicly hosted Streamlit application.
+
+The application is deployed using Streamlit Community Cloud by connecting the GitHub repository and selecting `app.py` as the main application file.
+
+When the hosted application starts, it checks whether a trained model is available in its environment. If the model is missing, the application automatically executes `train_model.py` to train and save a model using the dataset available in the repository.
+
+This allows visitors to use the hosted application without downloading the source code, installing Python, or manually training the model.
+
+The hosted application uses the model generated in its cloud environment, while users downloading the GitHub repository can independently train their own models locally.
 
 ## Model Evaluation
 
 The recorded test accuracy was **89.09%** on a held-out test set created using an 80:20 stratified train-test split with `random_state=42`.
 
-This result reflects evaluation on the selected dataset and split. Performance may differ on reviews from other platforms, product categories, or newer generative AI systems.
+This result reflects evaluation on the selected dataset and split. Performance may differ on reviews from other platforms, product categories, or newer generative AI systems. Users training their own models may obtain different evaluation results.
 
 ## Limitations
 
@@ -169,7 +208,7 @@ This result reflects evaluation on the selected dataset and split. Performance m
 - Test performance on newer AI-generated reviews.
 - Explore multilingual review analysis.
 - Investigate promotional-content detection.
-- Develop a graphical user interface or browser extension.
+- Develop more advanced graphical interfaces and browser-based features.
 - Improve model evaluation and prediction explanations.
 
 ## Code License
@@ -178,9 +217,9 @@ The source code of this project is licensed under the **GNU General Public Licen
 
 Users may use, study, modify, and redistribute the covered code subject to the license terms. Distributed derivative works covered by the GPL must comply with its applicable requirements.
 
-See the [`LICENSE`](LICENSE) file or read the full license at:
+See the [`LICENSE`](https://github.com/TCG-code/AI-Consumer-Review-Analyser/blob/main/LICENSE) file or read the full license at:
 
-https://www.gnu.org/licenses/gpl-3.0.html
+[https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)
 
 The code license does not automatically replace the dataset's license or determine the licensing status of every trained model artifact.
 
