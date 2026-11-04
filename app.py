@@ -1,4 +1,19 @@
 import streamlit as st
+
+import os
+import sys
+import subprocess
+import streamlit as st
+
+MODEL_PATH = "models/review_pipeline.pkl"
+
+if not os.path.exists(MODEL_PATH):
+    with st.spinner("Training the AI model for the first time... Please wait."):
+        subprocess.run(
+            [sys.executable, "train_model.py"],
+            check=True
+        )
+
 from review_analyser import analyse_review
 
 # Page configuration
