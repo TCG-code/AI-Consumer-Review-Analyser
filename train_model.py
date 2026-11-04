@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import os
 import joblib
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -120,6 +121,8 @@ def train_model():
 
     # Create models folder if it does not exist
     MODEL_DIR.mkdir(exist_ok=True)
+
+    os.makedirs("models", exist_ok=True)
 
     # Save vectorizer and model together
     joblib.dump(pipeline, MODEL_PATH)
